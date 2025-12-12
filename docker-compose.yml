@@ -36,7 +36,15 @@ services:
       - waha_media:/app/.media
     ports:
       - "3000:3000"
-
+  ollama:
+    image: ollama/ollama:latest
+    platform: linux/amd64
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_/root/.ollama
+    restart: unless-stopped
+    
   n8n:
     image: n8nio/n8n:latest
     platform: linux/amd64
